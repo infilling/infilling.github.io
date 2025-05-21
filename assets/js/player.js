@@ -25,6 +25,8 @@ const tracks = [
   { title: "plaqueboymax - gold", path: "assets/music/gold.mp3" },
   { title: "plaqueboymax - Beaverskin", path: "assets/music/Beaverskin.mp3" },
   { title: "NIKOWOODYEAR® - CLIPS .!", path: "assets/music/CLIPS.mp3" },
+  { title: "Jace! - Up Now", path: "assets/music/Up_Now.mp3" },
+  { title: "ydemii - i dont exist", path: "assets/music/iDontExist.mp3" },
 ];
 
 tracks.forEach((track) => {
@@ -236,7 +238,7 @@ playPauseBtn.addEventListener("click", () => {
   if (audioPlayer.paused) {
     audioPlayer.play();
     playPauseBtn.innerHTML = '<i class="icon fa-solid fa-pause"></i>';
-    footer.textContent = `〤 ${tracks[currentTrack].title} 〤`;
+    footer.textContent = `${tracks[currentTrack].title}`;
     footer.classList.remove("slide-in-right", "slide-in-left");
     void footer.offsetWidth;
     footer.classList.add("slide-in-right");
@@ -250,7 +252,7 @@ playPauseBtn.addEventListener("click", () => {
 function loadTrack(index, animationClass) {
   currentTrack = index;
   audioPlayer.src = tracks[currentTrack].path;
-  footer.textContent = `〤 ${tracks[currentTrack].title} 〤`;
+  footer.textContent = `${tracks[currentTrack].title}`;
   footer.classList.remove("slide-in-right", "slide-in-left");
   void footer.offsetWidth;
   footer.classList.add(animationClass);
