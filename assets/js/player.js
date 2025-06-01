@@ -17,7 +17,7 @@ const lyricsButton = document.getElementById("lyrics-button");
 const pfpImage = document.getElementById("dc-pfp");
 
 const API_URL = "https://api.wxrn.lol/api/lyrics";
-const defaultFooterText = "#CertifiedBallHog";
+const defaultFooterText = "";
 
 const tracks = [
   { title: "Playboi Carti - 24 Songs", path: "assets/music/24Songs.mp3" },
@@ -27,6 +27,10 @@ const tracks = [
   { title: "NIKOWOODYEAR® - CLIPS .!", path: "assets/music/CLIPS.mp3" },
   { title: "Jace! - Up Now", path: "assets/music/Up_Now.mp3" },
   { title: "ydemii - i dont exist", path: "assets/music/iDontExist.mp3" },
+  { title: "Jace! - Feel Em Again", path: "assets/music/FeelEmAgain.mp3" },
+  { title: "SSGKobe - MIA", path: "assets/music/MIA.mp3" },
+  { title: "bigaj! - tf i feel", path: "assets/music/tfifeel.mp3" },
+  { title: "Calibucky - billie", path: "assets/music/billie.mp3" },
 ];
 
 tracks.forEach((track) => {
@@ -106,34 +110,6 @@ function updateAlbumCover(imageUrl) {
     }
   }
 }
-
-/**
- * @param {boolean} isPlaying
- */
-function toggleRotation(isPlaying) {
-  if (isPlaying) {
-    pfpImage.classList.add("rotating");
-  } else {
-    pfpImage.classList.remove("rotating");
-  }
-}
-
-audioPlayer.addEventListener("play", async () => {
-  toggleRotation(true);
-  const track = tracks[currentTrack];
-  if (track && track.artist && track.song) {
-    const albumCoverUrl = await fetchLastFmAlbumCover(track.artist, track.song);
-    updateAlbumCover(albumCoverUrl);
-  }
-});
-
-audioPlayer.addEventListener("pause", () => {
-  toggleRotation(false);
-  if (pfpImage.dataset.originalSrc) {
-    pfpImage.src = pfpImage.dataset.originalSrc;
-    delete pfpImage.dataset.originalSrc;
-  }
-});
 
 const originalLoadTrack = loadTrack;
 loadTrack = function (index, animationClass) {
@@ -331,7 +307,6 @@ async function displayLyrics(songName, artistName, audioPlayer, lyricsDisplay) {
           prevLine.textContent = lyricsArray[currentIndex - 1].lyrics;
           lyricsWrapper.appendChild(prevLine);
 
-          // Trigger reflow to restart animation
           void prevLine.offsetWidth;
           prevLine.classList.add("slide-in");
           prevLine.addEventListener("animationend", () => {
@@ -344,7 +319,6 @@ async function displayLyrics(songName, artistName, audioPlayer, lyricsDisplay) {
         currentLine.textContent = lyricsArray[currentIndex].lyrics;
         lyricsWrapper.appendChild(currentLine);
 
-        // Trigger reflow to restart animation
         void currentLine.offsetWidth;
         currentLine.classList.add("slide-in");
         currentLine.addEventListener("animationend", () => {
@@ -357,7 +331,6 @@ async function displayLyrics(songName, artistName, audioPlayer, lyricsDisplay) {
           nextLine.textContent = lyricsArray[currentIndex + 1].lyrics;
           lyricsWrapper.appendChild(nextLine);
 
-          // Trigger reflow to restart animation
           void nextLine.offsetWidth;
           nextLine.classList.add("slide-in");
           nextLine.addEventListener("animationend", () => {
