@@ -25,7 +25,7 @@ function countViews(ip) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": "d31e48dc475e0cc703c4a1a063415e8a",
+      "x-api-key": "96f235de98740f54486246943a83902d",
     },
     body: JSON.stringify({
       ip: ip,
