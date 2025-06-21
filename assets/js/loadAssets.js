@@ -3,7 +3,7 @@ const colorThief = new ColorThief();
 async function fetchAvatarsForAll() {
   const liElements = document.querySelectorAll("#popup li");
 
-  const discordId = "1365168981618589706";
+  const discordId = "473072537916538890";
   const avatarElement = document.querySelector("#dc-pfp");
   const faviconElement = document.querySelector("#short-icon");
   let decorationElement = document.getElementById("avatar-decoration");

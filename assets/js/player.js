@@ -31,6 +31,11 @@ const tracks = [
   { title: "SSGKobe - MIA", path: "assets/music/MIA.mp3" },
   { title: "bigaj! - tf i feel", path: "assets/music/tfifeel.mp3" },
   { title: "Calibucky - billie", path: "assets/music/billie.mp3" },
+  { title: "Odeal - Soh-Soh", path: "assets/music/SohSoh.mp3" },
+  {
+    title: "Reed Wonder & Aurora Olivas - Sleepers",
+    path: "assets/music/Sleepers.mp3",
+  },
 ];
 
 tracks.forEach((track) => {
